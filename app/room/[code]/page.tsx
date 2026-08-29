@@ -27,6 +27,7 @@ export default function RoomPage({ params }: RoomPageProps) {
     sendAction,
     startHand,
   } = useGameStore();
+  const handHistoryEntries = useGameStore((s) => s.handHistory);
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -112,7 +113,6 @@ export default function RoomPage({ params }: RoomPageProps) {
   });
 
   const isHost = room.host_id === user?.id;
-  const handHistoryEntries = useGameStore((s) => s.handHistory);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-table-felt p-4">
